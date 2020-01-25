@@ -1,0 +1,35 @@
+{{ define "Buku" }}
+  {{ template "Header" }}
+    <title>Buku</title>
+  </head>
+  <body> 
+    <h1>Golang MongoDB Curd</h1>
+    {{ template "Menu" }}
+      <br>
+      <a href="/buku/tambah">Tambah</a>
+      <br>
+      <br>
+      <table>
+        <tr>
+          <td>Penulis</td>
+          <td>Judul</td>
+          <td>Kota</td>
+          <td>Penerbit</td>
+          <td>Tahun</td>
+          <td>Edit</td>
+          <td>Delete</td>
+        </tr>
+      {{ range . }}
+        <tr>
+          <td> {{ .Penulis }} </td>
+          <td>{{ .Judul }} </td>
+          <td>{{ .Kota }} </td>
+          <td>{{ .Penerbit }} </td> 
+          <td>{{ .Tahun }} </td>
+          <td><a href="/buku/edit?id={{ .Id.Hex }}">Edit</a></td>
+          <td><a href="/buku/delete?id={{ .Id.Hex }}">Delete</a><td>
+        </tr>
+      {{ end }}
+      </table>
+  {{ template "Footer" }}
+{{ end }}
